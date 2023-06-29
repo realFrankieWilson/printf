@@ -20,7 +20,7 @@ int _flag1(const char *format, int *ptr)
 	};
 
 	const int ARRAYNUM[] = {
-		MINUS, PLUS, ZERO, HASH, SPACE, 0
+		_MINUS, _PLUS, _ZERO, _HASH, _SPACE, 0
 	};
 
 	for (count = *ptr + 1; format[count] != '\0'; count++)

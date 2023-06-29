@@ -1,14 +1,16 @@
 #ifndef HEADER_H
 #define HEADER_H
+
+/*************************************The standard libraries******************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <limit.h>
+#include <limits.h>
 #include <stdarg.h>
-int _write(char c);
-int _printf(const char *format, ...);
+/****************************************************************************/
 
 
+/****************** struct definination and declaration**********************/
 
 /**
  * struct usr -> user's inpute option.
@@ -41,26 +43,70 @@ usr_t usr_choice[] = {
 	{'R', _rot13string},
 	{'\0', NULL}
 };
+/*****************************************************************************/
 
-/************* Functions To print characters ************/
+
+
+/*********************************** MY MACRO DEFINITION *********************/
+/* FLAGS */
+#define _MINUS 1
+#define _PLUS 2
+#define _ZERO 4
+#define _HASH 8
+#define _SPACE 16
+/* End flags */
+
+/* SIZE */
+#define _LONG 2
+#define _SHORT 1
+
+/* End size */
+
+
+/* VOID POINTERS */
+#define UNUSED(x) (void)(x)
+#define _BUFFSIZE 10214
+
+/* End void pointers */
+
+
+/***************************FUCTIONS PROTOTYPES*******************************/
+
+/* Functions To print characters */
 int _char(va_list arg, char *argv, int flg, int wd, int preci, int size);
 
 
-/*********** flag functions ************/
+/* flag functions */
 int _flag1(const char *format, int *ptr);
 
-/*********** precisional function ********/
+/* precisional function */
 int _precision(const char *format, int *ptr, va_list list);
 
 
-/*********** size function *************/
+/* size function */
 int _size(const char *format, int *ptr);
 
 
-/*********** width function ***********/
+/* width function */
 int _width(const char *formart, int *ptr, va_list list);
 
-/************ handle function ***********/
+/* handle function */
 int print_type(const char *form, int *index, va_list l, char array[],
 		int f, int w, int p, int s);
+
+/*print integer */
+int print_integers(va_list args, char array[], int f, int w, int p, int s);
+
+/* print binary */
+int binary(va_list args, char array[], int f, int w, int p, int s);
+
+/* print percentage */
+int percent(va_list args, char array[], int f, int w, int p, int s);
+
+/* print string */
+int string(va_list args, char array[], int f, int w, int p, int s);
+
+/* _printf function*/
+void _array(char *argv, int *index);
+
 #endif
