@@ -1,0 +1,10 @@
+handle_write_char => handle_char
+int _char(va_list arg, char *argv, int flg, int wd, int preci, int size)
+
+print_buffer() = _buff();
+get_flags() flgs()
+get width = wid()
+get precision() = preci()
+getsize () _size();
+handle_print() - print_handle()
+print_buffer --> _print_buffer:x
