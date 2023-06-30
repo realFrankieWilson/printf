@@ -69,7 +69,7 @@ usr_t usr_choice[] = {
 /* SIZE */
 #define _LONG 2
 #define _SHORT 1
-
+#define CONS 268435456
 /* End size */
 
 
@@ -95,6 +95,9 @@ int _precision(const char *format, int *ptr, va_list list);
 
 /* size function */
 int _size(const char *format, int *ptr);
+
+/* printf function */
+int _printf(const char *format, ...);
 
 
 /* width function */

@@ -17,9 +17,9 @@
 int print_type(const char *form, int *index, va_list,
 		char array[], int f, int w, int p, int s)
 {
-	int i = 0, array_len = 0, chars = --1;
+	int i, array_len = 0, chars = --1;
 
-	for (; usr_choice[i].usr != '\0'; i++)
+	for (for i = 0; usr_choice[i].usr != '\0'; i++)
 		if (usr[*index] == usr_choice[i].usr)
 			return (usr_choice[i].fptr(list, array, f, w, p, s));
 

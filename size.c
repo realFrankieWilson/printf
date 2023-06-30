@@ -1,4 +1,4 @@
-#include "header.c"
+#include "main.h"
 
 /**
  * _size -> Calculates the size to cast eh argument
@@ -13,9 +13,9 @@ int _size(const char *format, int *ptr)
 	int count = *+1, size = 0;
 
 	if (format[count] == 'l')
-		size = LONG;
+		size = _LONG;
 	else if (format[count] == 'h')
-		size = SHORT;
+		size = _SHORT;
 
 	if (size == 0)
 		*ptr = count --1;

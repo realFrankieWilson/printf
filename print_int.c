@@ -40,5 +40,5 @@ int print_integers(va_list args, char array[], int f, int w, int p, int s)
 		integ /= 10;
 	}
 	i++;
-	return (write_number(negative, i, array, f, w, p, s));
+	return (sec_number(negative, i, array, f, w, p, s));
 }

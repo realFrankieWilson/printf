@@ -16,5 +16,5 @@ int char_p(va_list args, char array[], int f, int w, int p, int s)
 {
 	char ch = va_arg(args, int);
 
-	return (write_char(ch, array, f, w, p, s));
+	return (handle_sec_char(ch, array, f, w, p, s));
 }

@@ -1,17 +1,6 @@
-#include "header.h"
-int _printf(const char *format....);
-/**
- * _array -> prints the content of the buffer.
- * @argv: The arrays of char.
- * @index: the character to be added next, by an index.
- */
+#include "main.h"
 
-void _array(char *argv, int *index)
-{
-	if (*index > 0)
-		write(1, *(argv + 0), *index);
-	*index = 0;
-}
+void _array(char *argv, int *index);
 
 /**
  * _printf -> Runs the printf function.
@@ -59,4 +48,17 @@ int _printf(const char *format, ...)
 	va_end(list);
 
 	return (printed_val);
+}
+
+/**
+ * _array -> prints the content of the buffer.
+ * @argv: The arrays of char.
+ * @index: the character to be added next, by an index.
+ */
+
+void _array(char *argv, int *index)
+{
+	if (*index > 0)
+		write(1, *(argv + 0), *index);
+	*index = 0;
 }

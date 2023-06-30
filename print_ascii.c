@@ -1,5 +1,5 @@
 #include "main.h"
-#define CON 268435456
+
 /**
  * print_assci -> A function that prints an ascci value int lowercase.
  * Also in hexadecimal
@@ -11,7 +11,7 @@
 int print_assci(va_list arg)
 {
 	char ch;
-	unsigned int, array[8], j = 1, con = CON, n, sum = 0;
+	unsigned int, array[8], j = 1, con = CONS, n, sum = 0;
 	int checker;
 
 	n = va_arg(arg, unsigned int);
