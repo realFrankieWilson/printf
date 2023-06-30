@@ -58,6 +58,11 @@ usr_t usr_choice[] = {
 
 /* MAP ASCCI VALUES IN HEXADECIMAL FORM */
 #define HEX "0123456789ABCDEF"
+#define S_HEX "0123456789abcdef"
+#define CAP_ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define LOW_ "abcdefghijklmnopqrstuvwxyz"
+#define CAP_LOW_ROT "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+#define ROT_REV "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"
 
 
 
@@ -116,7 +121,7 @@ void _array(char *argv, int *index);
 
 /******The Checks Fucntions******/
 /*printable functions */
-_printable(char c);
+int _printable(char c);
 
 
 /******************* THE HEXADECIMAL FUNCTIONS *******************************/
@@ -150,6 +155,43 @@ int _upper_hexa(va_list args, char array[], int f, int w, int p, int s);
 int _hexa_lo_up(va_list args, char array[], char map[], char buff[], int f,
 		char f_ch[], int w, int p, int s);
 
+
+/**************************** PRINTS POINTERS, REVERS ETC ********************/
+
+/* print rot13 strings. */
+int _rot13(va_list args, char array[], int f, int w, int p, int s);
+
+/* print reverse strings. */
+int _reverse_string(va_list types, char array[], int f, int w, int p, int s);
+
+/* print non-printable */
+int non_printable(va_list args, char array[], int f, int w, int p, int s);
+
+/* print pointer */
+int _pointer(va_list args, char array[], int f, int w, int p, int s);
+
+
+/******************** WRITE HANDLE FUNCTIN **********************************/
+
+/* handle_sec_char */
+int handle_sec_char(char c, char buffer[], int flags, int width, int precision,
+		int size);
+
+/* sec_number*/
+int sec_number(int is_negative, int ind, char buffer[], int flags,
+		int precision, int size);
+
+
+/* sec_num */
+int sec_num(int ind, char buffer[], int flags, int padd, char extra_c);
+
+/* sec unused */
+int sec_unused(int is_negative, int ind, char buffer[], int flags, int width,
+		int precision, int size);
+
+/* sec_pointer */
+int sec_pointer(char buffer[], int ind, int length, int width, int flags,
+		char padd, char extrac, int padd_start);
 
 
 #endif
