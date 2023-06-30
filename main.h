@@ -80,7 +80,7 @@ usr_t usr_choice[] = {
 /* End void pointers */
 
 
-/***************************FUCTIONS PROTOTYPES*******************************/
+/***************************FUNCTIONS PROTOTYPES*******************************/
 
 /* Functions To print characters */
 int _char(va_list arg, char *argv, int flg, int wd, int preci, int size);
