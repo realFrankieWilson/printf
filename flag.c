@@ -1,4 +1,4 @@
-#include "header.c"
+#include "main.h"
 
 /**
  * _flag1 -> Function that calculates the active flags.

@@ -1,4 +1,4 @@
-#include "header.c"
+#include "main.h"
 
 /**
  * print_type -> prints argument based on type.

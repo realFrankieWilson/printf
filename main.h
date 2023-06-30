@@ -1,5 +1,5 @@
-#ifndef HEADER_H
-#define HEADER_H
+#ifndef MAIN_H
+#define MAIN_H
 
 /*************************************The standard libraries******************/
 #include <stdio.h>
@@ -56,6 +56,11 @@ usr_t usr_choice[] = {
 #define _SPACE 16
 /* End flags */
 
+/* MAP ASCCI VALUES IN HEXADECIMAL FORM */
+#define HEX "0123456789ABCDEF"
+
+
+
 /* SIZE */
 #define _LONG 2
 #define _SHORT 1
@@ -108,5 +113,21 @@ int string(va_list args, char array[], int f, int w, int p, int s);
 
 /* _printf function*/
 void _array(char *argv, int *index);
+
+/******The Checks Fucntions******/
+/*printable functions */
+_printable(char c);
+
+/*hexadecimal assci code */
+int hexadecimal_appnd(char assci_, char array[], int index);
+
+/* digit verification */
+int _digit(char c);
+
+/* number size converter */
+long int _convert(long int n, int s);
+
+/* size converter */
+long int size_convert(unsigned long int n, int s);
 
 #endif

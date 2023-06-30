@@ -21,7 +21,7 @@ int handle_sec_char(char c, char buffer[],
 	UNUSED(precision);
 	UNUSED(size);
 
-	if (flags & F_ZERO)
+	if (flags & _ZERO)
 		padd = '0';
 
 	buffer[i++] = c;
@@ -29,15 +29,15 @@ int handle_sec_char(char c, char buffer[],
 
 	if (width > 1)
 	{
-		buffer[BUFF_SIZE - 1] = '\0';
+		buffer[_BUFFERSIZE - 1] = '\0';
 		for (i = 0; i < width - 1; i++)
-			buffer[BUFF_SIZE - i - 2] = padd;
+			buffer[_BUFFERSIZE - i - 2] = padd;
 
-		if (flags & F_MINUS)
+		if (flags & _MINUS)
 			return (write(1, &buffer[0], 1) +
-					sec(1, &buffer[BUFF_SIZE - i - 1], width - 1));
+					sec(1, &buffer[_BUFFERSIZE - i - 1], width - 1));
 		else
-			return (sec(1, &buffer[BUFF_SIZE - i - 1], width - 1) +
+			return (sec(1, &buffer[_BUFFERSIZE - i - 1], width - 1) +
 					sec(1, &buffer[0], 1));
 	}
 
@@ -60,18 +60,18 @@ int handle_sec_char(char c, char buffer[],
 int sec_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int length = BUFF_SIZE - ind - 1;
+	int length = _BUFFERSIZE - ind - 1;
 	char padd = ' ', extra_ch = 0;
 
 	UNUSED(size);
 
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
+	if ((flags & _ZERO) && !(flags & _MINUS))
 		padd = '0';
 	if (is_negative)
 		extra_ch = '-';
-	else if (flags & F_PLUS)
+	else if (flags & _PLUS)
 		extra_ch = '+';
-	else if (flags & F_SPACE)
+	else if (flags & _SPACE)
 		extra_ch = ' ';
 
 	return (sec_num(ind, buffer, flags, width, precision,
@@ -97,9 +97,9 @@ int sec_num(int ind, char buffer[],
 {
 	int i, padd_start = 1;
 
-	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0' && width == 0)
+	if (prec == 0 && ind == _BUFFERSIZE - 2 && buffer[ind] == '0' && width == 0)
 		return (0); /* printf(".0d", 0)  no char is printed */
-	if (prec == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
+	if (prec == 0 && ind == _BUFFERSIZE - 2 && buffer[ind] == '0')
 		buffer[ind] = padd = ' '; /* width is displayed with padding ' ' */
 	if (prec > 0 && prec < length)
 		padd = ' ';
@@ -112,19 +112,19 @@ int sec_num(int ind, char buffer[],
 		for (i = 1; i < width - length + 1; i++)
 			buffer[i] = padd;
 		buffer[i] = '\0';
-		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
+		if (flags & _MINUS && padd == ' ')/* Asign extra char to left of buffer */
 		{
 			if (extra_c)
 				buffer[--ind] = extra_c;
 			return (sec(1, &buffer[ind], length) + sec(1, &buffer[1], i - 1));
 		}
-		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buff */
+		else if (!(flags & _MINUS) && padd == ' ')/* extra char to left of buff */
 		{
 			if (extra_c)
 				buffer[--ind] = extra_c;
 			return (sec(1, &buffer[1], i - 1) + sec(1, &buffer[ind], length));
 		}
-		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		else if (!(flags & _MINUS) && padd == '0')/* extra char to left of padd */
 		{
 			if (extra_c)
 				buffer[--padd_start] = extra_c;
@@ -160,7 +160,7 @@ int sec_unsgnd(int is_negative, int ind,
 	UNUSED(is_negative);
 	UNUSED(size);
 
-	if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
+	if (precision == 0 && ind == _BUFFERSIZE - 2 && buffer[ind] == '0')
 		return (0); /* printf(".0d", 0)  no char is printed */
 
 	if (precision > 0 && precision < length)
@@ -172,7 +172,7 @@ int sec_unsgnd(int is_negative, int ind,
 		length++;
 	}
 
-	if ((flags & F_ZERO) && !(flags & F_MINUS))
+	if ((flags & _ZERO) && !(flags & _MINUS))
 		padd = '0';
 
 	if (width > length)
@@ -182,7 +182,7 @@ int sec_unsgnd(int is_negative, int ind,
 
 		buffer[i] = '\0';
 
-		if (flags & F_MINUS) /* Asign extra char to left of buffer [buffer>padd]*/
+		if (flags & _MINUS) /* Asign extra char to left of buffer [buffer>padd]*/
 		{
 			return (sec(1, &buffer[ind], length) + write(1, &buffer[0], i));
 		}
@@ -218,7 +218,7 @@ int sec_pointer(char buffer[], int ind, int length,
 		for (i = 3; i < width - length + 3; i++)
 			buffer[i] = padd;
 		buffer[i] = '\0';
-		if (flags & F_MINUS && padd == ' ')/* Asign extra char to left of buffer */
+		if (flags & _MINUS && padd == ' ')/* Asign extra char to left of buffer */
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
@@ -226,7 +226,7 @@ int sec_pointer(char buffer[], int ind, int length,
 				buffer[--ind] = extra_c;
 			return (sec(1, &buffer[ind], length) + write(1, &buffer[3], i - 3));
 		}
-		else if (!(flags & F_MINUS) && padd == ' ')/* extra char to left of buffer */
+		else if (!(flags & _MINUS) && padd == ' ')/* extra char to left of buffer */
 		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
@@ -234,7 +234,7 @@ int sec_pointer(char buffer[], int ind, int length,
 				buffer[--ind] = extra_c;
 			return (sec(1, &buffer[3], i - 3) + sec(1, &buffer[ind], length));
 		}
-		else if (!(flags & F_MINUS) && padd == '0')/* extra char to left of padd */
+		else if (!(flags & _MINUS) && padd == '0')/* extra char to left of padd */
 		{
 			if (extra_c)
 				buffer[--padd_start] = extra_c;
@@ -248,5 +248,5 @@ int sec_pointer(char buffer[], int ind, int length,
 	buffer[--ind] = '0';
 	if (extra_c)
 		buffer[--ind] = extra_c;
-	return (sec(1, &buffer[ind], BUFF_SIZE - ind - 1));
+	return (sec(1, &buffer[ind], _BUFFERSIZE - ind - 1));
 }

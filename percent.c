@@ -1,3 +1,4 @@
+#include "main.h"
 /**
  * percent -> prints the percent sign.
  * @args: arguments list.
