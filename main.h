@@ -118,6 +118,9 @@ void _array(char *argv, int *index);
 /*printable functions */
 _printable(char c);
 
+
+/******************* THE HEXADECIMAL FUNCTIONS *******************************/
+
 /*hexadecimal assci code */
 int hexadecimal_appnd(char assci_, char array[], int index);
 
@@ -129,5 +132,24 @@ long int _convert(long int n, int s);
 
 /* size converter */
 long int size_convert(unsigned long int n, int s);
+
+
+/* print unsigned int */
+int _unsigned(va_list args, char array[], int f, int w, int p, int s);
+
+/* print print unsigned number in octal form */
+int _octal(va_list args, char array[], int f, int w, int p, int s);
+
+/* print unsinged numbers in hexadecimal */
+int _hexadecimal_(va_list args, char array[], int f, int w, int p, int s);
+
+/* print unsigned numbers in upper hexadecimal */
+int _upper_hexa(va_list args, char array[], int f, int w, int p, int s);
+
+/* print hexadecimal num in lower / upper case */
+int _hexa_lo_up(va_list args, char array[], char map[], char buff[], int f,
+		char f_ch[], int w, int p, int s);
+
+
 
 #endif
