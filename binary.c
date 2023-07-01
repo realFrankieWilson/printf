@@ -1,51 +1,42 @@
 #include "main.h"
 
 /**
- * binary -> prints an unsigned number.
- * @args: list of arguments.
- * @array: array to handle print
- * @f: calculates active flags.
- * @w: the width.
- * @p: precision specification
- * @s: size specifier
+ * _binary -> function to print binary
+ * @bin: list being passed
  *
- * Return: number of binary printed.
+ * Return: updated count return.
  */
 
-int binary(va_list args, char array[], int f, int w, int p, int s)
+int _binary(va_list bin)
 {
-	int count = 0;
-	unsigned int x, y, z, bin;
-	unsigned int j[32];
+	int count = 0, i;
+	int *arr;
+	unsigned int x = va_arg(bin, unsigned int);
+	unsigned int temp = x;
 
-	UNUSED(array);
-	UNUSED(f);
-	UNUSED(w);
-	UNUSED(p);
-	UNUSED(s);
-
-
-	x = va_arg(args, unsigned int);
-	y = 2147483648; /** (2^31) */
-	j[0] = x / y;
-
-	for (z = 1; z <= 31; i++)
+	while (x / 2 != 0)
 	{
-		y /= 2;
-		j[i] = (x / y) % 2;
+		x /= 2;
+		count++;
 	}
 
-	for (z = 0, bin = 0, count = 0, i <= 31; i++)
+	arr = malloc(count * sizeof(int));
+	if (arr == NULL)
 	{
-		bin += a[i];
-		if (bin || z == 31)
-		{
-			char a = '0' + j[z];
-
-			write(1, &a, 1);
-			count++;
-		}
-
+		free(arr);
+		return (0);
 	}
+
+
+	for (i = 0; i < count; i++)
+	{
+		arr[i] = temp % 2;
+		temp /= 2;
+	}
+
+	for (i = count - 1; i >= 0; i--)
+		_putchar(arr[i] + '0');
+
+	free(arr);
 	return (count);
 }
